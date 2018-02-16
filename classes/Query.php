@@ -1594,13 +1594,13 @@ class Query {
 	private function _ordercollation($option) {
 		$option = mb_strtolower($option);
 
-		$results = $this->DB->query('SHOW CHARACTER SET');
+		$results = $this->DB->query('SHOW COLLATION');
 		if (!$results) {
 			return false;
 		}
 
 		while ($row = $results->fetchRow()) {
-			if ($option == $row['Default collation']) {
+			if ($option == $row['Collation']) {
 				$this->setCollation($option);
 				break;
 			}
